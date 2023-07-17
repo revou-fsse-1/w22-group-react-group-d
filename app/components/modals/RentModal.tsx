@@ -23,11 +23,10 @@ import Heading from '../Heading';
 
 enum STEPS {
   CATEGORY = 0,
-  LOCATION = 1,
-  INFO = 2,
-  IMAGES = 3,
-  DESCRIPTION = 4,
-  PRICE = 5,
+  INFO = 1,
+  IMAGES = 2,
+  DESCRIPTION = 3,
+  PRICE = 4,
 }
 
 const RentModal = () => {
@@ -63,7 +62,6 @@ const RentModal = () => {
   const category = watch('category');
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
 
   const setCustomValue = (id: string, value: any) => {
@@ -173,12 +171,6 @@ const RentModal = () => {
           subtitle="How many rooms do you have?"
         />
         <hr />
-        <Counter 
-          onChange={(value) => setCustomValue('bathroomCount', value)}
-          value={bathroomCount}
-          title="Bathrooms" 
-          subtitle="How many bathrooms do you have?"
-        />
       </div>
     )
   }
@@ -251,7 +243,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="Rent your property!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
