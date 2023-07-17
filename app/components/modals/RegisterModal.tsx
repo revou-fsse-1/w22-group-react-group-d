@@ -67,6 +67,7 @@ const RegisterModal= () => {
         title="Welcome to NaNInn"
         subtitle="Create an account!"
       />
+      <label htmlFor="email">Email: </label>
       <Input
         id="email"
         label="Email"
@@ -75,6 +76,7 @@ const RegisterModal= () => {
         errors={errors}
         required
       />
+      <label htmlFor="name">Username: </label>
       <Input
         id="name"
         label="Name"
@@ -83,6 +85,7 @@ const RegisterModal= () => {
         errors={errors}
         required
       />
+      <label htmlFor="password">Password: </label>
       <Input
         id="password"
         label="Password"

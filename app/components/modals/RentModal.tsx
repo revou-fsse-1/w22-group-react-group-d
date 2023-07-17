@@ -17,6 +17,7 @@ import Modal from "./Modal";
 import Counter from "../inputs/Counter";
 import CategoryInput from '../inputs/CategoryInput';
 import { categories } from '../navbar/Categories';
+import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
 
@@ -48,8 +49,11 @@ const RentModal = () => {
   } = useForm<FieldValues>({
     defaultValues: {
       category: '',
+      location: null,
       guestCount: 1,
       roomCount: 1,
+      bathroomCount: 1,
+      imageSrc: '',
       price: 1,
       title: '',
       description: '',
@@ -59,6 +63,8 @@ const RentModal = () => {
   const category = watch('category');
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
+  const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -103,6 +109,7 @@ const RentModal = () => {
     if (step === STEPS.PRICE) {
       return 'Create'
     }
+
     return 'Next'
   }, [step]);
 
@@ -110,6 +117,7 @@ const RentModal = () => {
     if (step === STEPS.CATEGORY) {
       return undefined
     }
+
     return 'Back'
   }, [step]);
 
@@ -164,6 +172,13 @@ const RentModal = () => {
           title="Rooms" 
           subtitle="How many rooms do you have?"
         />
+        <hr />
+        <Counter 
+          onChange={(value) => setCustomValue('bathroomCount', value)}
+          value={bathroomCount}
+          title="Bathrooms" 
+          subtitle="How many bathrooms do you have?"
+        />
       </div>
     )
   }
@@ -174,6 +189,10 @@ const RentModal = () => {
         <Heading
           title="Add a photo of your place"
           subtitle="Show guests what your place looks like!"
+        />
+        <ImageUpload
+          onChange={(value) => setCustomValue('imageSrc', value)}
+          value={imageSrc}
         />
       </div>
     )
@@ -232,7 +251,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Rent yours!"
+      title="Airbnb your home!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

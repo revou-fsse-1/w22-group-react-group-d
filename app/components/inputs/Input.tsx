@@ -69,7 +69,7 @@ const Input: React.FC<InputProps> = ({
           peer-placeholder-shown:translate-y-0 
           peer-focus:scale-75
           peer-focus:-translate-y-4
-          ${errors[id] ? 'text-[#1B4571]' : 'text-white'}
+          ${errors[id] ? 'text-[#000000]' : 'text-white'}
         `}
       >
         {label}

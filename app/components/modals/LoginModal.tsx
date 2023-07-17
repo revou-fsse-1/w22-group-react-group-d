@@ -73,14 +73,16 @@ const LoginModal = () => {
         title="Welcome back"
         subtitle="Login to your account!"
       />
+      <label htmlFor="email">Email: </label>
       <Input
         id="email"
         label="Email"
         disabled={isLoading}
-        register={register}  
+        register={register}
         errors={errors}
         required
       />
+      <label htmlFor="password">Password: </label>
       <Input
         id="password"
         label="Password"
