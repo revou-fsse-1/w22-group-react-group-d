@@ -20,13 +20,15 @@ import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
+import CountrySelect from "../inputs/CountrySelect";
 
 enum STEPS {
   CATEGORY = 0,
-  INFO = 1,
-  IMAGES = 2,
-  DESCRIPTION = 3,
-  PRICE = 4,
+  LOCATION = 1,
+  INFO = 2,
+  IMAGES = 3,
+  DESCRIPTION = 4,
+  PRICE = 5,
 }
 
 const RentModal = () => {
@@ -63,6 +65,7 @@ const RentModal = () => {
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const imageSrc = watch('imageSrc');
+  const location = watch('location');
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -71,6 +74,10 @@ const RentModal = () => {
       shouldValidate: true
     })
   }
+
+  const Map = useMemo(() => dynamic(() => import('../Map'), { 
+    ssr: false 
+  }), [location]);
 
   const onBack = () => {
     setStep((value) => value - 1);
@@ -150,6 +157,22 @@ const RentModal = () => {
     </div>
   )
 
+   if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your properties located?"
+          subtitle="Help guests find your property!"
+        />
+        <CountrySelect 
+          value={location} 
+          onChange={(value) => setCustomValue('location', value)} 
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
   if (step === STEPS.INFO) {
     bodyContent = (
       <div className="flex flex-col gap-8">
@@ -179,8 +202,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
+          title="Add a photo of your property"
+          subtitle="Show guests what your property looks like!"
         />
         <ImageUpload
           onChange={(value) => setCustomValue('imageSrc', value)}
@@ -194,7 +217,7 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
+          title="How would you describe your property?"
           subtitle="Short and sweet works best!"
         />
         <Input

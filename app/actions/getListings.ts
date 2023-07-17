@@ -5,6 +5,7 @@ export interface IListingsParams {
   guestCount?: number;
   roomCount?: number;
   category?: string;
+  locationValue?: string;
 }
 
 export default async function getListings(
@@ -15,6 +16,7 @@ export default async function getListings(
       userId,
       roomCount, 
       guestCount,
+      locationValue,
       category,
     } = params;
 
@@ -38,6 +40,10 @@ export default async function getListings(
       query.guestCount = {
         gte: +guestCount
       }
+    }
+
+     if (locationValue) {
+      query.locationValue = locationValue;
     }
 
     const listings = await prisma.listing.findMany({
