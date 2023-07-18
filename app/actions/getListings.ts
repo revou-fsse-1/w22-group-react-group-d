@@ -53,7 +53,7 @@ export default async function getListings(
       }
     }); 
     
-    console.log(listings)
+    //console.log(listings)
     const saveListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),

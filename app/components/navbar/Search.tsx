@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import { SaveListing } from '@/app/types';
@@ -13,12 +13,17 @@ const Search: React.FC<SearchProps> = ({ listings }) => {
   const [searchInput, setSearchInput] = useState('');
 
   const handleSearch = () => {
+    console.log('searchInput:', searchInput); // Check the value of searchInput
+    console.log('List: ', listings)
+
     const filteredResults = listings.filter(listing => {
       return (
         listing.category.toLowerCase().includes(searchInput.toLowerCase()) ||
         listing.locationValue.toLowerCase().includes(searchInput.toLowerCase())
       );
     });
+
+    console.log('filteredResults:', filteredResults); // Check the filtered results
 
     setSearchResults(filteredResults);
   };

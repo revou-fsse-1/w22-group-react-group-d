@@ -4,7 +4,6 @@ import ListingCard from "@/app/components/listings/ListingCard";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
-import Search from "./components/navbar/Search";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -25,9 +24,9 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <ClientOnly>
       <Container>
-        <div className="mb-4">
+        {/*<div className="mb-4">
           <Search listings={listings} />
-        </div>
+  </div>*/}
         <div
           className="
             pt-24
