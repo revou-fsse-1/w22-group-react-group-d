@@ -59,7 +59,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             text-white
           "
         >
-          Rent your property
+          Rent your properties
         </div>
         <div 
         onClick={toggleOpen}
@@ -112,7 +112,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                   onClick={() => router.push('/properties')}
                 />
                 <MenuItem 
-                  label="Rent your property" 
+                  label="Rent your properties" 
                   onClick={rentModal.onOpen}
                 />
                 <hr />

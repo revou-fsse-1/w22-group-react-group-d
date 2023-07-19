@@ -29,7 +29,7 @@ const Search: React.FC<SearchProps> = ({ listings }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="items-center hidden md:block">
       <input
         type="text"
         placeholder="Search"
