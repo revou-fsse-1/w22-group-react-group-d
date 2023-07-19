@@ -90,12 +90,15 @@ const ListingCard: React.FC<ListingCardProps> = ({
             />
           </div>
         </div>
+         <div className="font-semibold text-lg">
+          {data.title}
+        </div>
         <div className="font-semibold text-lg">
           {location?.region}, {location?.label}
         </div>
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">
-            Rp.{price}
+            $ {price}
           </div>
         </div>
         {onAction && actionLabel && (
