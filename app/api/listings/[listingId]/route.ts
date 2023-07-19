@@ -44,7 +44,7 @@ export async function DELETE(
   return NextResponse.json(listing);
 }
 
-export async function EDIT(
+export async function PUT(
   request: Request,
   { params }: { params: IParams }
 ) {
