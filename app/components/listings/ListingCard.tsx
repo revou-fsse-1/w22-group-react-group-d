@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
+import useCountries from "@/app/hooks/useCountries";
 
 import { 
   SaveListing, 
@@ -31,6 +32,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
+
+  const { getByValue } = useCountries();
+
+  const location = getByValue(data.locationValue);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -84,6 +89,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
               currentUser={currentUser}
             />
           </div>
+        </div>
+        <div className="font-semibold text-lg">
+          {location?.region}, {location?.label}
         </div>
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">

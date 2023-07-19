@@ -24,9 +24,6 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <ClientOnly>
       <Container>
-        {/*<div className="mb-4">
-          <Search listings={listings} />
-  </div>*/}
         <div
           className="
             pt-24

@@ -6,17 +6,14 @@ import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SaveListing, 
-  // SaveReservation, 
   SaveUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
-// import ListingReservation from "@/app/components/listings/ListingReservation";
 
 interface ListingClientProps {
-  // reservations?: SaveReservation[];
   listing: SaveListing & {
     user: SaveUser;
   };
@@ -37,20 +34,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
   const [isLoading, setIsLoading] = useState(false);
   const [totalPrice, setTotalPrice] = useState(listing.price);
-
-  // const onCreateReservation = useCallback(() => {
-  //     if (!currentUser) {
-  //       return loginModal.onOpen();
-  //     }
-  //     setIsLoading(true);
-  // },
-  // [
-  //   totalPrice, 
-  //   listing?.id,
-  //   router,
-  //   currentUser,
-  //   loginModal
-  // ]);
 
   useEffect(() => {
       if (listing.price === 0) {
@@ -100,12 +83,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 md:col-span-3
               "
             >
-              {/* <ListingReservation
-                price={listing.price}
-                totalPrice={totalPrice}
-                onSubmit={onCreateReservation}
-                disabled={isLoading}
-              /> */}
             </div>
           </div>
         </div>
