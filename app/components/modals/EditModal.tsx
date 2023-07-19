@@ -1,14 +1,9 @@
-"use client";
-
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-
-import useRentModal from "@/app/hooks/useRentModal";
-
 import Modal from "./Modal";
 import Counter from "../inputs/Counter";
 import CategoryInput from "../inputs/CategoryInput";
@@ -17,6 +12,7 @@ import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
 import CountrySelect from "../inputs/CountrySelect";
+import useEditModal from "@/app/hooks/useEditModal";
 
 enum STEPS {
   CATEGORY = 0,
@@ -32,9 +28,10 @@ interface EditModalProps {
   onClose: () => void;
 }
 
-const EditModal: React.FC<EditModalProps> = ({ listingId }) => {
+const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
+  const { isOpen, openModal, closeModal } = useEditModal({onClose});
+
   const router = useRouter();
-  const rentModal = useRentModal();
 
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
@@ -102,10 +99,8 @@ const EditModal: React.FC<EditModalProps> = ({ listingId }) => {
       .put(`/api/listings/${listingId}`, data)
       .then(() => {
         toast.success("Listing updated!");
-        router.refresh();
-        reset();
         setStep(STEPS.CATEGORY);
-        rentModal.onClose();
+        closeModal();
       })
       .catch(() => {
         toast.error("Something went wrong.");
@@ -181,7 +176,7 @@ const EditModal: React.FC<EditModalProps> = ({ listingId }) => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          subtitle="What amenities do you have?"
         />
         <Counter
           onChange={(value) => setCustomValue("guestCount", value)}
@@ -268,13 +263,13 @@ const EditModal: React.FC<EditModalProps> = ({ listingId }) => {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={rentModal.isOpen}
-      title="Rent your property!"
+      isOpen={isOpen}
+      title="Edit your property!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-      onClose={rentModal.onClose}
+      onClose={closeModal}
       body={bodyContent}
     />
   );

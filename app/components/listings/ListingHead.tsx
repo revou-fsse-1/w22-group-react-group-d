@@ -26,14 +26,8 @@ const ListingHead: React.FC<ListingHeadProps> = ({
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
-    console.log("currentUser?.id:", currentUser?.id);
-    console.log("ownerId:", ownerId);
-
-    if (currentUser?.id === ownerId) {
-      setIsEditing(true);
-    } else {
-      console.log("Not the owner of the post.");
-    }
+    setIsEditing(true);
+    console.log("isEditing:", isEditing);
   };
 
   const handleModalClose = () => {
@@ -47,14 +41,12 @@ const ListingHead: React.FC<ListingHeadProps> = ({
         {isEditing ? (
           <EditModal listingId={id} onClose={handleModalClose} />
         ) : (
-          currentUser?.id === ownerId && (
-            <button
-              onClick={handleEditClick}
-              className="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
-            >
-              <RiEdit2Fill size={20} />
-            </button>
-          )
+          <button
+            onClick={handleEditClick}
+            className="p-2 rounded-md hover:bg-gray-100 focus:outline-none"
+          >
+            <RiEdit2Fill size={20} />
+          </button>
         )}
       </div>
       <div className="w-full h-[60vh] overflow-hidden rounded-xl relative">
