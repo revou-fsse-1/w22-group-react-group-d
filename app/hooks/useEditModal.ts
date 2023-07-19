@@ -9,11 +9,12 @@ const useEditModal = ({ onClose }: EditModalOptions) => {
 
     const openModal = () => {
         setIsOpen(true);
+        console.log("Modal is open")
     };
 
     const closeModal = () => {
         setIsOpen(false);
-        onClose(); // Call the onClose function provided as a prop when closing the modal
+        onClose();
     };
 
     return {

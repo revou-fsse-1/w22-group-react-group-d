@@ -66,7 +66,6 @@ export async function PUT(
   const updatedListing = await prisma.listing.update({
     where: {
       id: listingId,
-      userId: currentUser.id,
     },
     data: {
       title: body.title,

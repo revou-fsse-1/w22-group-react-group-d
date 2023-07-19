@@ -2,8 +2,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Modal from "./Modal";
 import Counter from "../inputs/Counter";
 import CategoryInput from "../inputs/CategoryInput";
@@ -26,14 +25,19 @@ enum STEPS {
 interface EditModalProps {
   listingId: string;
   onClose: () => void;
+  isOpen: boolean;
+  closeModal: () => void;
 }
 
-const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
-  const { isOpen, openModal, closeModal } = useEditModal({onClose});
-
-  const router = useRouter();
+const EditModal: React.FC<EditModalProps> = ({
+  listingId,
+  onClose,
+  isOpen,
+}) => {
+  const { openModal, closeModal } = useEditModal({ onClose });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isUpdateSuccess, setIsUpdateSuccess] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
 
   const {
@@ -42,7 +46,6 @@ const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
     setValue,
     watch,
     formState: { errors },
-    reset,
   } = useForm<FieldValues>({
     defaultValues: {
       category: "",
@@ -63,6 +66,13 @@ const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
   const imageSrc = watch("imageSrc");
   const location = watch("location");
 
+  useEffect(() => {
+    if (isUpdateSuccess) {
+      closeModal();
+      setIsUpdateSuccess(false); // Reset the state variable for future updates
+    }
+  }, [isUpdateSuccess, closeModal]);
+
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
       shouldDirty: true,
@@ -72,10 +82,7 @@ const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
   };
 
   const Map = useMemo(
-    () =>
-      dynamic(() => import("../Map"), {
-        ssr: false,
-      }),
+    () => dynamic(() => import("../Map"), { ssr: false }),
     [location]
   );
 
@@ -91,16 +98,16 @@ const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
     if (step !== STEPS.PRICE) {
       return onNext();
     }
+    data.price = parseInt(data.price);
 
     setIsLoading(true);
 
-    // Use the EDIT method for updating the listing
+    // Use the PUT method for updating the listing
     axios
       .put(`/api/listings/${listingId}`, data)
       .then(() => {
         toast.success("Listing updated!");
-        setStep(STEPS.CATEGORY);
-        closeModal();
+        setIsUpdateSuccess(true);
       })
       .catch(() => {
         toast.error("Something went wrong.");
@@ -159,7 +166,7 @@ const EditModal: React.FC<EditModalProps> = ({ listingId, onClose }) => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your properties located?"
+          title="Where is your property located?"
           subtitle="Help guests find your property!"
         />
         <CountrySelect
