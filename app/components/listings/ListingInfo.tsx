@@ -6,6 +6,8 @@ import { SaveUser } from "@/app/types";
 
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
+import Request from "./ListingRequest";
+import { useState } from "react";
 
 interface ListingInfoProps {
   user: SaveUser,
@@ -26,7 +28,32 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   roomCount,
   category,
 }) => {
+  const [isAdditionalRequestModalOpen, setAdditionalRequestModalOpen] = useState(false);
+  const [typeOfRequest, setTypeOfRequest] = useState("interior");
+  const [requestDescription, setRequestDescription] = useState("");
 
+  const handleOpenAdditionalRequestModal = () => {
+    setAdditionalRequestModalOpen(true);
+  };
+
+  const handleCloseAdditionalRequestModal = () => {
+    setAdditionalRequestModalOpen(false);
+  };
+
+  const handleTypeOfRequestChange = (value: string) => {
+    setTypeOfRequest(value);
+  };
+
+  const handleDescriptionChange = (value: string) => {
+    setRequestDescription(value);
+  };
+
+  const handleAdditionalRequestSubmit = () => {
+    // Handle the submission logic here
+    console.log("Type of Request:", typeOfRequest);
+    console.log("Request Description:", requestDescription);
+    handleCloseAdditionalRequestModal();
+  };
   return ( 
     <div className="col-span-4 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
@@ -73,6 +100,28 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       text-lg font-light text-neutral-500">
         {description}
       </div>
+
+      {/* Additional Request Button */}
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+        onClick={handleOpenAdditionalRequestModal}
+      >
+        Additional Request
+      </button>
+
+      {/* Additional Request Modal */}
+      <Request
+        isOpen={isAdditionalRequestModalOpen}
+        onClose={handleCloseAdditionalRequestModal}
+        onSubmit={handleAdditionalRequestSubmit}
+        title="Additional Request"
+        actionLabel="Submit"
+        typeOfRequest={typeOfRequest}
+        onTypeOfRequestChange={handleTypeOfRequestChange}
+        description={requestDescription}
+        onDescriptionChange={handleDescriptionChange}
+      />
+
     </div>
    );
 }
