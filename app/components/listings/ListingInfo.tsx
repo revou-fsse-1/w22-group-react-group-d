@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 import { SaveUser } from "@/app/types";
 
@@ -100,6 +99,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       text-lg font-light text-neutral-500">
         {description}
       </div>
+     
 
       {/* Additional Request Button 
       <button
