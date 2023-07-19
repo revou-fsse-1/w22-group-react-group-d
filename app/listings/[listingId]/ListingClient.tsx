@@ -1,7 +1,7 @@
 'use client';
 
 import axios from "axios";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/app/hooks/useLoginModal";
@@ -32,23 +32,13 @@ const ListingClient: React.FC<ListingClientProps> = ({
       items.label === listing.category);
   }, [listing.category]);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(listing.price);
-
-  useEffect(() => {
-      if (listing.price === 0) {
-        setTotalPrice(0);
-      } else {
-        setTotalPrice(listing.price);
-      }
-    }, [listing.price]);
-
   return ( 
     <Container>
       <div 
         className="
           max-w-screen-lg 
           mx-auto
+          py-5
         "
       >
         <div className="flex flex-col gap-6">
@@ -58,6 +48,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             locationValue={listing.locationValue}
             id={listing.id}
             currentUser={currentUser}
+            // ownerId={currentUser}
           />
           <div 
             className="

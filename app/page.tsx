@@ -4,6 +4,7 @@ import ListingCard from "@/app/components/listings/ListingCard";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
+import EmptyPage from "@/app/components/EmptyPage";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -16,7 +17,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   if (listings.length === 0) {
     return (
       <ClientOnly>
-        <h1>Empty List</h1>
+        <EmptyPage />
       </ClientOnly>
     );
   }
