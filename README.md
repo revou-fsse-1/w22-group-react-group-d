@@ -6,7 +6,7 @@ Welcome to NaN Inn, where you can experience the comfort of home, no matter wher
 
 Join with Us Here!!
 
-> https://na-n-peroawrrn-nikenhpsr.vercel.app/
+> https://nan-inn.nikenhpsr.site/
 
 ## Features
 
