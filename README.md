@@ -1,6 +1,6 @@
 # NaN Inn - Anywhere Feels Like Home
 
-![NanInnLogo](./public/images/logo.png)
+![NanInnLogo](./public/images/nan-inn.png)
 
 Welcome to NaN Inn, where you can experience the comfort of home, no matter where you go. Our mission is to provide a seamless and personalized travel experience, making "Anywhere Feels Like Home" a reality for our guests. Whether you're traveling for business or leisure, NaN Inn is your perfect home away from home.
 
