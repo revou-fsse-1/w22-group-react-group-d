@@ -6,16 +6,25 @@ Welcome to NaN Inn, where you can experience the comfort of home, no matter wher
 
 Join with Us Here!!
 
-> https://nan-inn.nikenhpsr.site/
+> https://na-n-inn.vercel.app/
+
+## Who are We?
+
+| Name           | Role                |
+| -------------- | ------------------- |
+| Anggih Pratama | Front-End Developer |
+| Niken Hapsari  | Fullstack Developer |
+| Nurdin Beta    | Front-End Developer |
 
 ## Features
 
 1. Simple and Seamless Rental Process
 
-    NaN Inn makes the property rental process a breeze. You can **List Your Property** with these steps:
-    -  Sign up/Register your account
-    -  Create a listing for your property in a few simple clicks. 
-    -  Add photos, descriptions, and other essential details to attract potential tenants.
+   NaN Inn makes the property rental process a breeze. You can **List Your Property** with these steps:
+
+   - Sign up/Register your account
+   - Create a listing for your property in a few simple clicks.
+   - Add photos, descriptions, and other essential details to attract potential tenants.
 
 2. Many Options to Suit Your Needs
 
@@ -25,11 +34,10 @@ Join with Us Here!!
 
 3. Completely FREE!!
 
-    At NaN Inn, we believe in making property rental accessible to all without breaking the bank. Enjoy the complete suite of NaN Inn features at absolutely no cost.
+   At NaN Inn, we believe in making property rental accessible to all without breaking the bank. Enjoy the complete suite of NaN Inn features at absolutely no cost.
 
 ## Contributing to NaN Inn
 
 We welcome contributions from the community to enhance NaN Inn and make it an even better platform for travelers. If you have any ideas or would like to report issues, feel free to create an issue in our GitHub repository.
 
 If you want to contribute code, please fork the repository, make your changes, and submit a pull request. Our team will review it, and if everything looks good, we'll merge it with the main codebase.
-
