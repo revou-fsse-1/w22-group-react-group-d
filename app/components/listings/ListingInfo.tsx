@@ -101,13 +101,13 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
       </div>
      
 
-      {/* Additional Request Button 
+      {/* Additional Request Button */}
       <button
         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
         onClick={handleOpenAdditionalRequestModal}
       >
         Additional Request
-      </button> */}
+      </button>
 
       {/* Additional Request Modal */}
       <Request

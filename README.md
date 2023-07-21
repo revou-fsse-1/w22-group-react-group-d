@@ -1,40 +1,35 @@
-# NaN Inn
+# NaN Inn - Anywhere Feels Like Home
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![NanInnLogo](public\images\logo.png)
 
-## Getting Started
+Welcome to NaN Inn, where you can experience the comfort of home, no matter where you go. Our mission is to provide a seamless and personalized travel experience, making "Anywhere Feels Like Home" a reality for our guests. Whether you're traveling for business or leisure, NaN Inn is your perfect home away from home.
 
-First, run the development server:
+Join with Us Here!!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+> https://na-n-peroawrrn-nikenhpsr.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Simple and Seamless Rental Process
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+    NaN Inn makes the property rental process a breeze. You can **List Your Property** with these steps:
+    -  Sign up/Register your account
+    -  Create a listing for your property in a few simple clicks. 
+    -  Add photos, descriptions, and other essential details to attract potential tenants.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2. Many Options to Suit Your Needs
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Property Types: Whether it's a single-family home, an apartment, a condo, or even a commercial space, NaN Inn accommodates various property types.
 
-## Learn More
+- Flexible Pricing: Set your desired rental price, and if needed, update it at any time based on market conditions.
 
-To learn more about Next.js, take a look at the following resources:
+3. Completely FREE!!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    At NaN Inn, we believe in making property rental accessible to all without breaking the bank. Enjoy the complete suite of NaN Inn features at absolutely no cost.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing to NaN Inn
 
-## Deploy on Vercel
+We welcome contributions from the community to enhance NaN Inn and make it an even better platform for travelers. If you have any ideas or would like to report issues, feel free to create an issue in our GitHub repository.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you want to contribute code, please fork the repository, make your changes, and submit a pull request. Our team will review it, and if everything looks good, we'll merge it with the main codebase.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

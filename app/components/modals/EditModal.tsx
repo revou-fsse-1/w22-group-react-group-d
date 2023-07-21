@@ -83,7 +83,7 @@ const EditModal: React.FC<EditModalProps> = ({
 
   const Map = useMemo(
     () => dynamic(() => import("../Map"), { ssr: false }),
-    [location]
+    []
   );
 
   const onBack = () => {

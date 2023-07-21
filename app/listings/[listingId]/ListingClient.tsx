@@ -47,8 +47,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
             imageSrc={listing.imageSrc}
             locationValue={listing.locationValue}
             id={listing.id}
-            currentUser={currentUser}
-            // ownerId={currentUser}
           />
           <div 
             className="

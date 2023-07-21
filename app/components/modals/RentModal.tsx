@@ -76,7 +76,7 @@ const RentModal = () => {
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
-  }), [location]);
+  }), []);
 
   const onBack = () => {
     setStep((value) => value - 1);

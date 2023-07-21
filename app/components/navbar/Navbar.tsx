@@ -1,10 +1,10 @@
-import { SaveUser } from "@/app/types";
-
+"use client";
+import { SaveListing, SaveUser } from "@/app/types";
 import Categories from "./Categories";
 import Container from "../Container";
 import Logo from "./Logo";
-import Search from "./Search";
 import UserMenu from "./UserMenu";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   currentUser?: SaveUser | null;
@@ -13,6 +13,22 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({
   currentUser,
 }) => {
+  const [listings, setListings] = useState<SaveListing[]>([]);
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      try {
+        const response = await fetch("/api/listings");
+        const data = await response.json();
+        setListings(data); // Set the fetched data to the listings state
+      } catch (error) {
+        console.error('Error fetching listings:', error);
+      }
+    };
+
+    fetchListings();
+  }, []);
+
   return ( 
     <div className="fixed w-full bg-[#1B4571] z-10 shadow-sm">
       <div
@@ -33,7 +49,6 @@ const Navbar: React.FC<NavbarProps> = ({
           "
         >
           <Logo />
-          <Search />
           <UserMenu currentUser={currentUser} />
         </div>
       </Container>
@@ -41,7 +56,6 @@ const Navbar: React.FC<NavbarProps> = ({
     <Categories />
   </div>
   );
-}
-
+};
 
 export default Navbar;
